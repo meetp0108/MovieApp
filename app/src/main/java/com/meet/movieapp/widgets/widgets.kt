@@ -101,26 +101,41 @@ fun MovieRow(movie: Movie = getMovies()[0], onItemClick: (String) -> Unit = {}) 
                 )
 
                 AnimatedVisibility(visible = expanded) {
-                    Column (){
+                    Column() {
                         Text(buildAnnotatedString {
-                            withStyle(style = SpanStyle(color = Color.DarkGray,
-                                fontSize = 13.sp,) ){
+                            withStyle(
+                                style = SpanStyle(
+                                    color = Color.DarkGray,
+                                    fontSize = 13.sp,
+                                )
+                            ) {
                                 append("Plot: ")
                             }
-                            withStyle(style = SpanStyle(color = Color.DarkGray,
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.Light)){
+                            withStyle(
+                                style = SpanStyle(
+                                    color = Color.DarkGray,
+                                    fontSize = 13.sp,
+                                    fontWeight = FontWeight.Light
+                                )
+                            ) {
                                 append(movie.plot)
                             }
                         }, modifier = Modifier.padding(6.dp))
 
                         Divider(modifier = Modifier.padding(3.dp))
 
-                        Text(text = "Director: ${movie.director}", style = MaterialTheme.typography.bodySmall
+                        Text(
+                            text = "Director: ${movie.director}",
+                            style = MaterialTheme.typography.bodySmall
                         )
-                        Text(text = "Actors: ${movie.actors}", style = MaterialTheme.typography.bodySmall
+                        Text(
+                            text = "Actors: ${movie.actors}",
+                            style = MaterialTheme.typography.bodySmall
                         )
-                        Text(text = "Rating: ${movie.rating}", style = MaterialTheme.typography.bodySmall)
+                        Text(
+                            text = "Rating: ${movie.rating}",
+                            style = MaterialTheme.typography.bodySmall
+                        )
                     }
                 }
 
