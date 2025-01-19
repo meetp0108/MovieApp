@@ -7,6 +7,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -34,6 +35,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -75,14 +77,15 @@ fun MovieRow(movie: Movie = getMovies()[0], onItemClick: (String) -> Unit = {}) 
                 modifier = Modifier
                     .padding(12.dp)
                     .size(100.dp),
-                shape = RectangleShape,
+                shape = RoundedCornerShape(corner = CornerSize(16.dp)),
                 shadowElevation = 4.dp
             ) {
-                Image(painter = rememberImagePainter(data = movie.images[0],
-                    builder = {
-                        crossfade(true)
-                            .transformations(CircleCropTransformation())
-                    }), contentDescription = "Movie Poster"
+                Image(
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.FillBounds,
+                    painter = rememberImagePainter(data = movie.images[0]),
+                    contentDescription = "Movie Poster",
+
                 )
                 //Icon(imageVector = Icons.Default.AccountBox, contentDescription = "Movie Image")
             }
@@ -149,7 +152,8 @@ fun MovieRow(movie: Movie = getMovies()[0], onItemClick: (String) -> Unit = {}) 
                         .clickable {
                             expanded = !expanded
                         },
-                    tint = Color.DarkGray)
+                    tint = Color.DarkGray
+                )
 
             }
 
